@@ -2,7 +2,11 @@
 #include <string>
 #include "LinkedList.hpp"
 
-
+/*
+* Here the value of newData will be passed by value, and not passed by reference, a local instance of the
+* data will be created and assigned to data. However, newNext is a pointer and is how c++ allows pass by
+* reference.
+*/
 template <typename T>
 Node<T>::Node(T newData, Node<T> *newNext){
         data = newData;
@@ -15,6 +19,10 @@ LinkedList<T>::LinkedList(T data){
         firstNode = new Node<T>(data);
 }
 
+/*
+* Here one can see how C++ is statically typed, when a new variable is declared the type, 'Node<T>', must be declared
+* here before compilation.
+*/
 template <typename T>
 void LinkedList<T>::add(T data, int position){
         Node<T> *node = new Node<T>(data);
@@ -45,6 +53,10 @@ void LinkedList<T>::add(T data, int position){
         }
  }
 
+/*
+* Here when a node is removed the 'delete' keyword must be used, in C++ data must be manually
+* assigned to the heap as well as removed from it by the programmer.
+*/
  template <typename T>
  void LinkedList<T>::remove(T data){
          if(firstNode->getData() == data){
